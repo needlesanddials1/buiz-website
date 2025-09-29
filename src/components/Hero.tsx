@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
 
     try {
       // 🔗 Replace with your PRODUCTION n8n webhook URL
-      const webhookUrl = "https://your-n8n-domain.com/webhook/your-webhook-id";
+      const webhookUrl = "https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b";
 
       await fetch(webhookUrl, {
         method: "POST",
