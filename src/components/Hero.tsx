@@ -14,7 +14,9 @@ const Hero: React.FC = () => {
     description: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -26,23 +28,27 @@ const Hero: React.FC = () => {
     e.preventDefault();
 
     try {
-      // 1) Send data to n8n webhook
-      await fetch("https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b", {
+      // 🔗 Replace with your PRODUCTION n8n webhook URL
+      const webhookUrl = "https://your-n8n-domain.com/webhook/your-webhook-id";
+
+      await fetch(webhookUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
       });
 
-      // 2) Redirect to Calendly
+      // Reset form after submission
+      setFormData({ name: "", email: "", description: "" });
+
+      // Redirect to Calendly
       window.location.href =
         "https://calendly.com/mariaqibtiya-buizai/new-meeting";
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Webhook submission failed:", error);
       alert("Something went wrong. Please try again.");
     }
-
-    // Reset form (optional)
-    setFormData({ name: "", email: "", description: "" });
   };
 
   return (
@@ -63,8 +69,9 @@ const Hero: React.FC = () => {
           <button
             className="hero-cta-button"
             onClick={() =>
-              (window.location.href =
-                "https://calendly.com/mariaqibtiya-buizai/new-meeting")
+              document
+                .querySelector<HTMLFormElement>(".hero-form")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
           >
             Book Demo →
@@ -94,7 +101,7 @@ const Hero: React.FC = () => {
             />
             <input
               type="text"
-              name="description"
+              name="description" {/* ✅ Fixed name */}
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
