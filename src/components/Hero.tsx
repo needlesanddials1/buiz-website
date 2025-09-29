@@ -14,9 +14,7 @@ const Hero: React.FC = () => {
     description: "",
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -28,14 +26,14 @@ const Hero: React.FC = () => {
     e.preventDefault();
 
     try {
-      // 1. Send data to webhook
+      // 1) Send data to n8n webhook
       await fetch("https://n8n.buizai.com/webhook-test/b988f5b2-e601-4213-9bd1-0453b890f21b", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      // 2. Redirect to Calendly
+      // 2) Redirect to Calendly
       window.location.href =
         "https://calendly.com/mariaqibtiya-buizai/new-meeting";
     } catch (error) {
@@ -43,7 +41,7 @@ const Hero: React.FC = () => {
       alert("Something went wrong. Please try again.");
     }
 
-    // Reset form after submission
+    // Reset form (optional)
     setFormData({ name: "", email: "", description: "" });
   };
 
@@ -65,9 +63,8 @@ const Hero: React.FC = () => {
           <button
             className="hero-cta-button"
             onClick={() =>
-              document
-                .querySelector<HTMLFormElement>(".hero-form")
-                ?.scrollIntoView({ behavior: "smooth" })
+              (window.location.href =
+                "https://calendly.com/mariaqibtiya-buizai/new-meeting")
             }
           >
             Book Demo →
@@ -95,13 +92,13 @@ const Hero: React.FC = () => {
               className="form-input"
               required
             />
-            <textarea
+            <input
+              type="text"
               name="description"
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
               className="form-input"
-              required
             />
             <button type="submit" className="form-submit-button">
               Book Demo Now
@@ -114,4 +111,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-
