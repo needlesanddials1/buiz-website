@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
 
     try {
       // 1) Send data to n8n webhook
-      await fetch("https://n8n.buizai.com/webhook-test/b988f5b2-e601-4213-9bd1-0453b890f21b", {
+      await fetch("https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
