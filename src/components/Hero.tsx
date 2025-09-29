@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
     e.preventDefault();
 
     try {
-      // 🔗 Replace with your PRODUCTION n8n webhook URL
+      // 🔗 Replace with your actual PRODUCTION n8n webhook URL
       const webhookUrl = "https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b";
 
       await fetch(webhookUrl, {
@@ -66,6 +66,7 @@ const Hero: React.FC = () => {
             Stop wasting money on repetitive tasks. Boost your revenue with AI.
           </p>
 
+          {/* Scrolls to form when clicked */}
           <button
             className="hero-cta-button"
             onClick={() =>
@@ -99,13 +100,13 @@ const Hero: React.FC = () => {
               className="form-input"
               required
             />
-            <input
-              type="text"
-              name="description" {/* ✅ Fixed name */}
+            <textarea
+              name="description"
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
               className="form-input"
+              rows={4}
             />
             <button type="submit" className="form-submit-button">
               Book Demo Now
@@ -118,3 +119,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
