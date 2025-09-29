@@ -14,30 +14,31 @@ const Hero: React.FC = () => {
     description: "",
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  // Replace with your n8n PRODUCTION webhook URL
+  const webhookUrl = "https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b";
 
-    try {
-      // 🔗 Replace with your PRODUCTION n8n webhook URL
-      const webhookUrl = "https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b";
+  // Send data in the background (don’t wait for it)
+  fetch(webhookUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  }).catch((error) => {
+    console.error("Webhook submission failed:", error);
+  });
 
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  // Reset form
+  setFormData({ name: "", email: "", description: "" });
+
+  // Redirect immediately to Calendly
+  window.location.href =
+    "https://calendly.com/mariaqibtiya-buizai/new-meeting";
+};
+
 
       // Reset form after submission
       setFormData({ name: "", email: "", description: "" });
