@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
     e.preventDefault();
 
     // 🔗 Replace with your actual n8n PRODUCTION webhook URL
-    const webhookUrl = "https://n8n.buizai.com/webhook-test/b988f5b2-e601-4213-9bd1-0453b890f21b";
+    const webhookUrl = "https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b";
 
     // Send data in background (don’t block redirect)
     fetch(webhookUrl, {
