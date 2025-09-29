@@ -14,42 +14,35 @@ const Hero: React.FC = () => {
     description: "",
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-  // Replace with your n8n PRODUCTION webhook URL
-  const webhookUrl = "https://n8n.buizai.com/webhook/b988f5b2-e601-4213-9bd1-0453b890f21b";
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  // Send data in the background (don’t wait for it)
-  fetch(webhookUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  }).catch((error) => {
-    console.error("Webhook submission failed:", error);
-  });
+    try {
+      // 1) Send data to n8n webhook
+      await fetch("https://n8n.buizai.com/webhook-test/b988f5b2-e601-4213-9bd1-0453b890f21b", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-  // Reset form
-  setFormData({ name: "", email: "", description: "" });
-
-  // Redirect immediately to Calendly
-  window.location.href =
-    "https://calendly.com/mariaqibtiya-buizai/new-meeting";
-};
-
-
-      // Reset form after submission
-      setFormData({ name: "", email: "", description: "" });
-
-      // Redirect to Calendly
+      // 2) Redirect to Calendly
       window.location.href =
         "https://calendly.com/mariaqibtiya-buizai/new-meeting";
     } catch (error) {
-      console.error("Webhook submission failed:", error);
+      console.error("Error submitting form:", error);
       alert("Something went wrong. Please try again.");
     }
+
+    // Reset form (optional)
+    setFormData({ name: "", email: "", description: "" });
   };
 
   return (
@@ -70,9 +63,8 @@ const Hero: React.FC = () => {
           <button
             className="hero-cta-button"
             onClick={() =>
-              document
-                .querySelector<HTMLFormElement>(".hero-form")
-                ?.scrollIntoView({ behavior: "smooth" })
+              (window.location.href =
+                "https://calendly.com/mariaqibtiya-buizai/new-meeting")
             }
           >
             Book Demo →
@@ -102,7 +94,7 @@ const Hero: React.FC = () => {
             />
             <input
               type="text"
-              name="description" {/* ✅ Fixed name */}
+              name="description"
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
