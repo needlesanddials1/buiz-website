@@ -14,7 +14,9 @@ const Hero: React.FC = () => {
     description: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -22,9 +24,26 @@ const Hero: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Demo booking request submitted!");
+
+    try {
+      // 1. Send data to webhook
+      await fetch("https://n8n.buizai.com/webhook-test/b988f5b2-e601-4213-9bd1-0453b890f21b", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      // 2. Redirect to Calendly
+      window.location.href =
+        "https://calendly.com/mariaqibtiya-buizai/new-meeting";
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    }
+
+    // Reset form after submission
     setFormData({ name: "", email: "", description: "" });
   };
 
@@ -43,7 +62,16 @@ const Hero: React.FC = () => {
             Stop wasting money on repetitive tasks. Boost your revenue with AI.
           </p>
 
-          <button className="hero-cta-button">Book Demo →</button>
+          <button
+            className="hero-cta-button"
+            onClick={() =>
+              document
+                .querySelector<HTMLFormElement>(".hero-form")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Book Demo →
+          </button>
         </div>
 
         {/* Right Form */}
@@ -67,13 +95,13 @@ const Hero: React.FC = () => {
               className="form-input"
               required
             />
-            <input
-              type="text"
-              name="text"
+            <textarea
+              name="description"
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
               className="form-input"
+              required
             />
             <button type="submit" className="form-submit-button">
               Book Demo Now
@@ -86,3 +114,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
