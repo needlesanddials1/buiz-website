@@ -10,49 +10,49 @@
 }
 
 .work-heading {
-  font-size: clamp(2.8rem, 5vw, 3.4rem); /* ✅ bigger heading */
+  font-size: clamp(2.4rem, 4.5vw, 3rem); /* ✅ slightly smaller */
   font-weight: 700; /* ✅ bold */
   color: #2d6cdf; /* ✅ brand blue */
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 .work-subheading {
-  font-size: clamp(1.3rem, 2.8vw, 1.6rem); /* ✅ bigger intro */
-  line-height: 1.7;
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem); /* ✅ slightly smaller */
+  line-height: 1.65;
   color: #000; /* ✅ black text */
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .tiles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
 }
 
 .tile {
   background: #fff;
-  border-radius: 14px;
-  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  padding: 2rem 1.8rem;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   text-align: left;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tile:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .tile-name {
-  font-size: 1.7rem; /* ✅ bigger title */
+  font-size: 1.5rem; /* ✅ scaled down */
   font-weight: 700;
-  color: #2d6cdf; /* ✅ brand blue */
-  margin-bottom: 1rem;
+  color: #2d6cdf;
+  margin-bottom: 0.8rem;
 }
 
 .tile-desc {
-  font-size: 1.2rem; /* ✅ bigger text */
-  line-height: 1.8;
+  font-size: 1.05rem; /* ✅ scaled down */
+  line-height: 1.6;
   color: #333;
 }
 
@@ -63,18 +63,18 @@
   }
 
   .work-heading {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   .work-subheading {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .tile-name {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .tile-desc {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 }
