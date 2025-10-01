@@ -1,5 +1,5 @@
 .work-with-us {
-  background: #f9fafb; /* ✅ light contrast */
+  background: #f9fafb; /* ✅ light background */
   padding: 5rem 2rem;
 }
 
@@ -10,23 +10,23 @@
 }
 
 .work-heading {
-  font-size: clamp(2rem, 4vw, 2.8rem); /* ✅ smaller than hero */
+  font-size: clamp(2rem, 4vw, 2.8rem); /* ✅ responsive heading */
   font-weight: 600;
-  color: #000; /* ✅ black */
+  color: #000; /* ✅ black text */
   margin-bottom: 1rem;
 }
 
 .work-subheading {
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  color: #2d6cdf; /* ✅ same as "Automatically" */
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  line-height: 1.6;
+  color: #444; /* ✅ darker gray for readability */
   margin-bottom: 3rem;
 }
 
 .tiles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
 }
 
 .tile {
@@ -34,65 +34,26 @@
   border-radius: 10px;
   padding: 2rem 1.5rem;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left; /* ✅ align text naturally */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-.tile-icon {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tile-icon svg {
-  width: 2.2rem;
-  height: 2.2rem;
-  stroke: #2d6cdf; /* ✅ brand blue */
-  stroke-width: 2;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .tile-name {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.work-more {
-  font-size: 1.1rem;
-  color: #444;
-  margin: 1.5rem 0 0.5rem;
-}
-
-.work-question {
   font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  color: #2d6cdf; /* ✅ brand blue */
+  margin-bottom: 0.8rem;
 }
 
-/* Reuse hero button style */
-.hero-cta-button {
-  background: #00d8ff;
-  color: #fff;
+.tile-desc {
   font-size: 1rem;
-  font-weight: 600;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.hero-cta-button:hover {
-  background: #00b5d6;
-  transform: translateY(-2px);
+  line-height: 1.6;
+  color: #333;
 }
 
 /* Responsive */
@@ -100,5 +61,8 @@
   .tiles-grid {
     grid-template-columns: 1fr;
   }
-}
 
+  .work-subheading {
+    font-size: 1rem;
+  }
+}
