@@ -110,27 +110,6 @@ const FAQ: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <div className="faq-cta">
-          <div className="cta-content">
-            <h3 className="cta-title">Still Have Questions?</h3>
-            <p className="cta-description">
-              Get personalized answers and see how AI can specifically help your
-              business
-            </p>
-            <div className="cta-buttons">
-              <button className="primary-button">
-                Book Demo
-                <span className="button-arrow">→</span>
-              </button>
-              <button className="secondary-button">
-                Contact Support
-                <span className="support-icon">💬</span>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Background Elements */}
@@ -149,5 +128,4 @@ const FAQ: React.FC = () => {
   );
 };
 
-// ✅ Export makes it a valid module
 export default FAQ;
