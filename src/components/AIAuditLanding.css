@@ -1,0 +1,177 @@
+/* AIAuditLanding.css - drop into same folder as TSX and import as shown */
+:root {
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #9aa4b2;
+  --accent: linear-gradient(135deg, #6c63ff 0%, #00c0ff 100%);
+  --primary: #6c63ff;
+  --white: #ffffff;
+  --radius: 14px;
+  --gap: 20px;
+}
+
+.ai-audit-landing {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.ai-audit-card {
+  display: flex;
+  gap: var(--gap);
+  width: 100%;
+  max-width: 1100px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 6px 28px rgba(10,14,25,0.4);
+  align-items: flex-start;
+}
+
+/* left column */
+.ai-audit-left {
+  flex: 1.1 1 520px;
+  color: var(--white);
+}
+
+.ai-audit-title {
+  margin: 0 0 12px 0;
+  font-size: 1.9rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+}
+
+.ai-audit-sub {
+  margin: 0 0 16px 0;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.ai-benefits {
+  margin: 12px 0 0 0;
+  padding-left: 0;
+  list-style: none;
+  color: var(--muted);
+  display: grid;
+  gap: 8px;
+}
+
+/* right column (form) */
+.ai-audit-form {
+  flex: 0 0 420px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+.label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.label-text {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: var(--white);
+  outline: none;
+  transition: box-shadow .12s ease, border-color .12s ease;
+  font-size: 0.95rem;
+}
+
+.input:focus,
+.textarea:focus {
+  box-shadow: 0 6px 20px rgba(108,99,255,0.12);
+  border-color: rgba(108,99,255,0.85);
+}
+
+.input-error {
+  border-color: #ff7b7b;
+}
+
+.input-error-text {
+  color: #ffb4b4;
+  font-size: 0.82rem;
+  margin-top: 6px;
+}
+
+/* CTA buttons */
+.form-ctas {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--white);
+  background: rgba(255,255,255,0.03);
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 24px rgba(108,99,255,0.22);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--white);
+}
+
+/* success message */
+.success-text {
+  margin-top: 12px;
+  background: rgba(34,197,94,0.08);
+  color: #bbf7d0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Inline Calendly container */
+.calendly-inline-wrapper {
+  display: none;
+  width: 420px;
+  margin-left: 20px;
+}
+.calendly-inline-wrapper.show { display: block; }
+.calendly-inline {
+  min-height: 550px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* small screens */
+@media (max-width: 880px) {
+  .ai-audit-card { flex-direction: column; padding: 18px; }
+  .ai-audit-left { width: 100%; }
+  .ai-audit-form { width: 100%; flex: none; }
+  .calendly-inline-wrapper { display: none; }
+}
