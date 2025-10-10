@@ -10,8 +10,6 @@ import CostScale from './components/CostScale';
 import FAQ from './components/FAQ';
 import About from './components/About';
 import Footer from './components/Footer';
-
-// Pages
 import AIAuditLandingPage from './components/AIAuditLandingPage';
 
 import './App.css';
