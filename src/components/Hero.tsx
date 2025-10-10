@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
 
     // Always redirect to Calendly
     window.location.href =
-      "https://calendly.com/mariaqibtiya-buizai/new-meeting";
+      "https://calendly.com/mariaqibtiya-buizai/30min";
   };
 
   return (
