@@ -250,6 +250,28 @@ button.footer-link:hover::before {
   }
 }
 
+/* 🚀 Free AI Audit Button */
+.footer-cta-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 22px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 12px rgba(59, 130, 246, 0.3);
+}
+
+.footer-cta-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.45);
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+}
+
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .footer-container {
