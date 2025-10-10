@@ -12,10 +12,11 @@ import About from './components/About';
 import Footer from './components/Footer';
 
 // Pages
-import AIAuditLandingPage from './pages/AIAuditLandingPage';
+import AIAuditLandingPage from './components/AIAuditLandingPage';
 
 import './App.css';
 
+// Home page layout
 function HomePage() {
   return (
     <>
@@ -53,14 +54,18 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {/* Navbar with page state */}
         <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
+        {/* Routes */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About setCurrentPage={setCurrentPage} />} />
           <Route path="/ai-audit" element={<AIAuditLandingPage />} />
+          {/* You can add more routes here in the future */}
         </Routes>
 
+        {/* Footer with page state */}
         <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
     </Router>
