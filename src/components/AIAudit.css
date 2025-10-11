@@ -1,0 +1,53 @@
+.ai-audit-container {
+  max-width: 500px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.ai-audit-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.ai-audit-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.ai-audit-form input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.ai-audit-form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ai-audit-form button:hover {
+  background-color: #005ed3;
+}
+
+.ai-audit-container {
+  background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
